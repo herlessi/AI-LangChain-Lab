@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2024",                   // Fixa o JS do ES2024, totalmente suportado pelo Node 24 (evita recursos novos que ele ainda não tenha)
+    "module": "nodenext",                 // Segue as regras de módulos do Node (ESM/CommonJS conforme o "type" do package.json)
+    "moduleResolution": "nodenext",       // Resolve os imports do mesmo jeito que o Node (exige extensão nos caminhos relativos)
+    "noEmit": true,                       // Só verifica os tipos, sem gerar .js: quem executa o .ts é o próprio Node
+    "allowImportingTsExtensions": true,   // Permite import "./arquivo.ts", obrigatório para o Node rodar .ts direto
+    "erasableSyntaxOnly": true,           // Proíbe sintaxe que gera código (enum, namespace...), que o Node não consegue apagar
+    "verbatimModuleSyntax": true,         // Exige "import type" para imports só de tipo, para o Node removê-los com segurança
+    "strict": true,                       // Ativa todas as checagens rígidas de tipo (null, any implícito etc.)
+    "skipLibCheck": true,                 // Não verifica os .d.ts de node_modules: mais rápido e evita erros de terceiros
+    "types": ["node"]                     // Carrega só os tipos globais do Node (@types/node), como process e Buffer
+  },
+  "include": ["src"]
+}
