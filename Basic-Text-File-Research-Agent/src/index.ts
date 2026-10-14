@@ -124,7 +124,7 @@ async function main() {
     /*****************************************/
 
     
-    // //recuperando as mensagens obtidas da execução dos agentes
+    // 
     // const langChainAgentMessages = langChainAgentResult.messages
     // const deepAgentMessages = deepAgentResult.messages
 
@@ -136,6 +136,7 @@ async function main() {
     // console.log(deepAgentMessages[deepAgentMessages.length-1]!.contentBlocks)
     // // console.log(deepAgentMessages[deepAgentMessages.length-1]!.contentBlocks)
     
+    //recuperando as mensagens obtidas da execução dos agentes
     console.log("LangChain Agent:", langChainAgentResult.structuredResponse)
     console.log("Deep Agent:", deepAgentResult.structuredResponse)
     if (!deepAgentResult.structuredResponse) {
