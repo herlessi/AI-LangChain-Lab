@@ -27,7 +27,8 @@ const fetchTextFromUrl = tool(
 const model = await initChatModel('gpt-5.5',{
     temperature: 1, //o modelo 'gpt-5.5'  só aceita a temperatura padrão = 1
     timeout:300_000,
-    maxTokens:25_000
+    maxTokens:25_000,
+    reasoning: { effort: "low", summary: "auto" },
 })
 
 
@@ -123,17 +124,25 @@ async function main() {
     /*****************************************/
 
     
-    //recuperando as mensagens obtidas da execução dos agentes
-    const langChainAgentMessages = langChainAgentResult.messages
-    const deepAgentMessages = deepAgentResult.messages
+    // //recuperando as mensagens obtidas da execução dos agentes
+    // const langChainAgentMessages = langChainAgentResult.messages
+    // const deepAgentMessages = deepAgentResult.messages
 
-    console.log("LangChain Agent:")
-    console.log(langChainAgentMessages[langChainAgentMessages.length-1]!.contentBlocks)
+    // console.log("LangChain Agent:")
     // console.log(langChainAgentMessages[langChainAgentMessages.length-1]!.contentBlocks)
+    // // console.log(langChainAgentMessages[langChainAgentMessages.length-1]!.contentBlocks)
 
-    console.log("Deep Agent:")
-    console.log(deepAgentMessages[deepAgentMessages.length-1]!.contentBlocks)
+    // console.log("Deep Agent:")
     // console.log(deepAgentMessages[deepAgentMessages.length-1]!.contentBlocks)
+    // // console.log(deepAgentMessages[deepAgentMessages.length-1]!.contentBlocks)
+    
+    console.log("LangChain Agent:", langChainAgentResult.structuredResponse)
+    console.log("Deep Agent:", deepAgentResult.structuredResponse)
+    if (!deepAgentResult.structuredResponse) {
+        const last = deepAgentResult.messages.at(-1)
+        console.log("Última mensagem:", last?.type, last?.contentBlocks)
+    }
+
 
 
 }
