@@ -1,0 +1,7 @@
+{
+  "node_version": "22",
+  "graphs": {
+    "app": "./src/graph.ts:app"
+  },
+  "env": ".env"
+}
